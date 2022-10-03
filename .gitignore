@@ -22,8 +22,16 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 
+<<<<<<< Updated upstream
 TestBot/.mvn/
 
 *.cmd
 
 TestBot/mvnw
+=======
+TestBot/.idea/
+
+TestBot/.mvn/
+
+TestBot/target/
+>>>>>>> Stashed changes
