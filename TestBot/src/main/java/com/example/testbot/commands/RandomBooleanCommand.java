@@ -1,6 +1,7 @@
 package com.example.testbot.commands;
 
 import com.example.testbot.TestBot;
+import com.example.testbot.utils.Randomizer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.telegram.telegrambots.extensions.bots.commandbot.commands.BotCommand;
@@ -10,26 +11,22 @@ import org.telegram.telegrambots.meta.api.objects.User;
 import org.telegram.telegrambots.meta.bots.AbsSender;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
-public class RandomCommand extends BotCommand {
+public class RandomBooleanCommand  extends BotCommand {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(TestBot.class);
 
-    public RandomCommand() {
-        super("random", "Команда для получения случайного числа от 0 до 10");
+    public RandomBooleanCommand() {
+        super("random_boolean", "Команда для получения случайного Да/Нет");
     }
 
     @Override
     public void execute(AbsSender absSender, User user, Chat chat, String[] arguments) {
-        StringBuilder messageBuilder = new StringBuilder();
-        messageBuilder.append("Случайное число: ");
-        int random = (int) (Math.random() * 10);
-        messageBuilder.append(random);
-
-        SendMessage answer = new SendMessage(chat.getId().toString(), messageBuilder.toString());
+        String str = Randomizer.getRandomBoolean() ? "Ответ: ДА!" : "Ответ: НЕТ!";
+        SendMessage answer = new SendMessage(chat.getId().toString(), str);
         try {
             absSender.execute(answer);
         } catch (TelegramApiException e) {
-            LOGGER.error("Exception during executing RandomCommand: {}", e.getMessage());
+            LOGGER.error("Exception during executing RandomBooleanCommand: {}", e.getMessage());
             throw new RuntimeException(e);
         }
     }

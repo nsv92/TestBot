@@ -1,6 +1,7 @@
 package com.example.testbot;
 
-import com.example.testbot.commands.RandomCommand;
+import com.example.testbot.commands.RandomBooleanCommand;
+import com.example.testbot.commands.RandomIntCommand;
 import com.example.testbot.commands.StartCommand;
 import com.example.testbot.config.BotConfig;
 import org.slf4j.Logger;
@@ -8,10 +9,16 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.extensions.bots.commandbot.TelegramLongPollingCommandBot;
 import org.telegram.telegrambots.extensions.bots.commandbot.commands.helpCommand.HelpCommand;
+import org.telegram.telegrambots.meta.api.methods.commands.SetMyCommands;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
+import org.telegram.telegrambots.meta.api.objects.commands.BotCommand;
+import org.telegram.telegrambots.meta.api.objects.commands.scope.BotCommandScopeDefault;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 public class CommandsBot extends TelegramLongPollingCommandBot {
@@ -23,10 +30,14 @@ public class CommandsBot extends TelegramLongPollingCommandBot {
     public CommandsBot(BotConfig config) {
         this.config = config;
 
+
+//  Для инициализации меню команд т.к. в библиотеке meta.extensions не реализовано меню команд
+
 //        List<BotCommand> commandList = new ArrayList<>();
 //        commandList.add(new BotCommand("/help", "Список всех команд"));
 //        commandList.add(new BotCommand("/start", "Команда для начала работы с ботом"));
-//        commandList.add(new BotCommand("/random", "Команда для получения случайного числа от 0 до 10"));
+//        commandList.add(new BotCommand("/random_number", "Команда для получения случайного числа от 0 до 10"));
+//        commandList.add(new BotCommand("/random_boolean", "Команда для получения случайного ДА/НЕТ"));
 //
 //        try {
 //            this.execute(new SetMyCommands(commandList, new BotCommandScopeDefault(), null));
@@ -36,7 +47,8 @@ public class CommandsBot extends TelegramLongPollingCommandBot {
 
 
         register(new StartCommand());
-        register(new RandomCommand());
+        register(new RandomIntCommand());
+        register(new RandomBooleanCommand());
         register(new HelpCommand("/help", "Список всех команд", "Помощь"));
 
         registerDefaultAction(((absSender, message) -> {
