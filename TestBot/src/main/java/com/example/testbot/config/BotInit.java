@@ -1,5 +1,6 @@
 package com.example.testbot.config;
 
+import com.example.testbot.CommandsBot;
 import com.example.testbot.TestBot;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,14 +17,17 @@ public class BotInit {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(TestBot.class);
 
+//    @Autowired
+//    private TestBot bot;
+
     @Autowired
-    private TestBot bot;
+    private CommandsBot commandsBot;
 
     @EventListener({ContextRefreshedEvent.class})
     public void init() throws TelegramApiException {
         TelegramBotsApi telegramBotsApi = new TelegramBotsApi(DefaultBotSession.class);
         try {
-            telegramBotsApi.registerBot(bot);
+            telegramBotsApi.registerBot(commandsBot);
             LOGGER.info("Bot registration -> success!");
         }
         catch (TelegramApiException e) {

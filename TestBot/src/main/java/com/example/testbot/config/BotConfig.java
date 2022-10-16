@@ -3,6 +3,7 @@ package com.example.testbot.config;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.telegram.telegrambots.meta.api.objects.commands.BotCommand;
 
 @Configuration
 @PropertySource("application.properties")
@@ -29,4 +30,5 @@ public class BotConfig {
     public void setBotToken(String botToken) {
         this.botToken = botToken;
     }
+
 }
