@@ -6,7 +6,7 @@ public class Randomizer {
 
 //    возвращает случайный инт от 0 до 10
     public static int getRandomInt() {
-        return (int) (Math.random() * 10);
+        return (int) (Math.random() * 11);
     }
 
 //    возвращает случайный boolean
