@@ -1,10 +1,9 @@
 package com.example.testbot.utils;
 
-import com.example.testbot.services.ZodiacServiceImpl;
+import com.example.testbot.services.HoroscopeServiceImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.time.LocalDateTime;
 import java.util.Arrays;
 
 class ParserTest {
@@ -24,7 +23,7 @@ class ParserTest {
 
     @Test
     void service() {
-        ZodiacServiceImpl zodiacService = new ZodiacServiceImpl();
+        HoroscopeServiceImpl zodiacService = new HoroscopeServiceImpl();
         ZodiacSign[] signs = zodiacService.getUpdate();
         Arrays.stream(signs).forEach(s -> System.out.println(s.getPrediction()));
     }

@@ -1,7 +1,5 @@
 package com.example.testbot.utils;
 
-import java.util.Random;
-
 public class Randomizer {
 
 //    возвращает случайный инт от 0 до 10

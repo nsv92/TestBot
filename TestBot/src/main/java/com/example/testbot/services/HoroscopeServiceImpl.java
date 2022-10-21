@@ -13,7 +13,7 @@ import java.util.Arrays;
 import java.util.Optional;
 
 @Service
-public class ZodiacServiceImpl implements ZodiacService {
+public class HoroscopeServiceImpl implements HoroscopeService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(TestBot.class);
 
