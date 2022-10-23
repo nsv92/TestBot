@@ -17,17 +17,18 @@ public class BotInit {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(TestBot.class);
 
-//    @Autowired
-//    private TestBot bot;
-
     @Autowired
-    private CommandsBot commandsBot;
+    private TestBot bot;
+
+//    @Autowired
+//    private CommandsBot commandsBot;
 
     @EventListener({ContextRefreshedEvent.class})
     public void init() throws TelegramApiException {
         TelegramBotsApi telegramBotsApi = new TelegramBotsApi(DefaultBotSession.class);
         try {
-            telegramBotsApi.registerBot(commandsBot);
+//            telegramBotsApi.registerBot(commandsBot);
+            telegramBotsApi.registerBot(bot);
             LOGGER.info("Bot registration -> success!");
         }
         catch (TelegramApiException e) {
